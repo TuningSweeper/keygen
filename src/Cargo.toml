@@ -1,0 +1,22 @@
+[package]
+name = "keygen"
+version = "0.0.4"
+edition = "2021"
+
+[dependencies]
+hex = "0.4.3"
+clap = "2.33"
+getrandom = "0.2.10"
+ring = "0.16.20"
+zeroize = "1.6.0"
+lazy_static = "1.4.0"
+tiny-keccak =  { version = "2.0.2", features = ["sha3"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+overflow-checks = true
+strip = true
+panic = "abort"
+
