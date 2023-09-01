@@ -81,7 +81,8 @@ Will result in binary file in target/release/keygen
 
 ## Binary files?
 
-I have some pre-build binaries available. Before using these for anything real, check with me *personally* the file hashes first.
+I have some pre-build binaries available for Linux and Windows. Check https://github.com/TuningSweeper/keygen/binaries
+Before using these for anything real, check with me *personally* the file hashes first.
 
 ## Custom builds or features? 
 Sure, ask me.
@@ -149,6 +150,8 @@ Comparison of Dieharder p-values for relatively small amount of data (100 M u64 
 
 
 ## License
-(c) 2023 TuningSweeper
+(c) 2023 TuningSweeper.
+
 For hobbyists, released under GNU AGPLv3 License.
+
 For business/commercial/other use, check with me.
