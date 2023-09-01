@@ -70,6 +70,22 @@ keygen -a ascii -b 256 -c 3
 e<m2szElOINahV0`N(j@O).%30QGLQxC#Eag(;=
 ```
 
+## Building
+### In Linux
+```
+$ git clone https://github.com/TuningSweeper/keygen.git
+$ cd keygen/src
+keygen/src$ cargo build --release
+```
+Will result in binary file in target/release/keygen
+
+## Binary files?
+
+I have some pre-build binaries available. Before using these for anything real, check with me *personally* the file hashes first.
+
+## Custom builds or features? 
+Sure, ask me.
+
 ## Threat model
 
 * OS random number generator fails (or provides numbers known to the adversary)
@@ -95,17 +111,18 @@ One challenge in virtual environments is the possibility of taking snapshots or 
 ## Randomness sources
 
 Keygen uses three randomness sources to create seed for each letter: OS random (BCryptGenRandom in Windows, /dev/random in Linux), CPU rdrand and CPU jitter. Separate HMAC DRBG instance is used to create each letter.
-
+```
 For *each* letter:
 	1. Pull 512 bits from CPU rdrand.
 	2. Pull 512 bits from OS random.
 	3. Push 512 bits of raw CPU jitter through SHA3-256, take the lowest 64 bits. Repeat until there is 512 bits.
 	4. Use HMAC DRBG to create 64 bit random value from thse 3*512 bits. Use personalization string that contains the most accurate current time stamp.
 	5. Use the random 64 bit value to pick the letter.
-
+```
 
 ### CPU Jitter Entropy Collection
 
+This is primarily to ensure random passwords even if the CPU and OS and somehow compromised.
 Entropy is collected by running the following contraption until 512 bits are collected.
 ```
         let start = std::time::Instant::now();
@@ -131,11 +148,7 @@ Comparison of Dieharder p-values for relatively small amount of data (100 M u64 
 ![Dieharder p-values](dieharder-results/p-values.png?raw=true "Title")
 
 
-## Binary files?
-
-I have some pre-build binaries available. Before using these for anything real, check with me *personally* the file hashes first.
-
 ## License
-
 (c) 2023 TuningSweeper
-Released under GNU AGPLv3 License
+For hobbyists, released under GNU AGPLv3 License.
+For business/commercial/other use, check with me.
