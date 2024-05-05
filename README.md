@@ -1,6 +1,6 @@
 # keygen
 
-Creates keys and passwords.
+Creates keys and passwords. Most likely better than some other product.
 
 * Made with Rust.
 * Works on modern Intel & AMD CPUs.
@@ -82,10 +82,20 @@ Will result in binary file in target/release/keygen
 ## Binary files?
 
 I have some pre-build binaries available for Linux and Windows. Check https://github.com/TuningSweeper/keygen/binaries
-Before using these for anything real, check with me *personally* the file hashes first.
+Before using these for anything real, check with me *personally* how to verify the integrity of these.
 
 ## Custom builds or features? 
-Sure, ask me.
+Sure, ask me. I can do for example:
+
+* dedicated builds using disconnected hosts
+* software delivery on read-only media
+* support
+* graphical UI for Windows or Linux
+* periodic updates
+* etc.
+
+Just let me know. I'm located in Helsinki.
+
 
 ## Threat model
 
@@ -96,13 +106,13 @@ Sure, ask me.
 Threats outside the scope:
 
 * Used Rust crates compromised
-* Development or building tools or environment compromised resulting in a insecure binary
+* Development or building tools or environment compromised resulting in a insecure binary (I do have workaround for this, if needed)
 * Tool used in an environment where adversary has root/admin access and attempts to actively interfere with the keygen
 
 
 ### Few notes about the operation under a virtual machine.
 
-The hypervisor may trap rdrand and rdseed instructions. Should this happen we cannot be sure what kind of randomness would be provided. To combat this, keygen uses three randomness sources and strong method to combine these. As a result, the randomness source quality does not really matter if one of these is working just fine.
+The hypervisor may trap rdrand and rdseed instructions. Should this happen we cannot be sure what kind of randomness would be provided. To combat against this, keygen uses three randomness sources and strong method to combine these. As a result, the randomness source quality does not really matter if one of these sources is working fine.
 
 In virtual environment it's quite possible, that the lack of external interfaces results in low levels of entropy collected. In a Linux environment the keygen always verifies the amount of entropy in the entropy pool. The underlaying OS is probably using rdrand and/or rdseed to seed its internal random number sources. Should all these (rdrand/rdseed & cpu random) fail too, the third method (cpu jitter) provides enough entropy to provide random numbers. Besides, in such a case the keygen randomness is the least of your problems.
 
@@ -118,7 +128,7 @@ For *each* letter:
 	2. Pull 512 bits from OS random.
 	3. Push 512 bits of raw CPU jitter through SHA3-256, take the lowest 64 bits. Repeat until there is 512 bits.
 	4. Use HMAC DRBG to create 64 bit random value from thse 3*512 bits. Use personalization string that contains the most accurate current time stamp.
-	5. Use the random 64 bit value to pick the letter.
+	5. Use the random 64 bit value to pick *one single letter*.
 ```
 
 ### CPU Jitter Entropy Collection
@@ -154,4 +164,4 @@ Comparison of Dieharder p-values for relatively small amount of data (100 M u64 
 
 For hobbyists, released under GNU AGPLv3 License.
 
-For business/commercial/other use, check with me.
+For business/commercial/other use, check with me. (seriously, we can work something out. and if not this, maybe something else..)
