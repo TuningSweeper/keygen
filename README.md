@@ -82,7 +82,12 @@ Will result in binary file in target/release/keygen
 ## Binary files?
 
 I have some pre-build binaries available for Linux and Windows. Check https://github.com/TuningSweeper/keygen/binaries
-Before using these for anything real, check with me *personally* how to verify the integrity of these.
+Feel free to check with me *personally* how to verify the integrity of these. And please note that this repository and the provided binaries are not actively maintained, and there's no support whatsoever. If you want support, let me know. I'm sure we can work something out.
+
+For unknown reason some antivirus products go ballistic with some executables made with Rust. And it seems that I'm not alone with this.. Maybe a rebuild with new toolchain would do the trick..
+
+I'm also in progress of making a Windows GUI that would internally use the same keygen made with Rust.
+
 
 ## Custom builds or features? 
 Sure, ask me. I can do for example:
@@ -90,11 +95,12 @@ Sure, ask me. I can do for example:
 * dedicated builds using disconnected hosts
 * software delivery on read-only media
 * support
-* graphical UI for Windows or Linux
 * periodic updates
+* custom graphical UI for Windows or Linux
+* custom features
 * etc.
 
-Just let me know. I'm located in Helsinki.
+Just let me know. I'm located in Helsinki. You can reach me by tuningsweeper at sigint dot fi.
 
 
 ## Threat model
@@ -160,8 +166,8 @@ Comparison of Dieharder p-values for relatively small amount of data (100 M u64 
 
 
 ## License
-(c) 2023 TuningSweeper.
+(c) 2023-2024 TuningSweeper.
 
 For hobbyists, released under GNU AGPLv3 License.
 
-For business/commercial/other use, check with me. (seriously, we can work something out. and if not this, maybe something else..)
+For business/commercial/other use, check with me. (seriously, we can work something out. and if not this, maybe something else..). I'm reachable at tuningsweeper at sigint dot fi
