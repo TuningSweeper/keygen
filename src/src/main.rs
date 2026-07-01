@@ -301,9 +301,12 @@ fn main() {
         for i in 0..num_elements {
             // pull out a random value that does not result in modulo bias
             let mut random_value: Option<u64> = None;
+            let range = alphabet_count() as u64;
+            let limit = u64::MAX - ((u64::MAX % range) + 1);
+
             while random_value.is_none() {
                 let val = generate_u64();
-                if val.unwrap() <= (u64::MAX - (alphabet_count() as u64)) {
+                if val.unwrap() <= limit {
                     random_value = val;
                 }
             }
