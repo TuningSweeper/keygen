@@ -165,9 +165,15 @@ Comparison of Dieharder p-values for relatively small amount of data (100 M u64 
 ![Dieharder p-values](dieharder-results/p-values.png?raw=true "Title")
 
 
+## Changelog
+
+07/2026 - Fixed stupid modulo bias bug that resulted in something like 1/2^(64) (for full alphabet) bias. Thanks *you-know-who*.
+
+
+
 ## License
-(c) 2023-2024 TuningSweeper.
+(c) 2023-2026 TuningSweeper.
 
 For hobbyists, released under GNU AGPLv3 License.
 
-For business/commercial/other use, check with me. (seriously, we can work something out. and if not this, maybe something else..). I'm reachable at tuningsweeper at sigint dot fi
+For business/commercial/other use, check with me. (seriously, we can work something out. and if not this, maybe something else..)
